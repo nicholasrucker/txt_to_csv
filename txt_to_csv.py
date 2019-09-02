@@ -28,12 +28,10 @@ if userChoice == '1':
 	if tempTarget != '':
 		if tempTarget[len(tempTarget) - 1] == '\\':
 			target = tempTarget[:len(tempTarget) - 1] + '/'
-			print("new target is: " + target)
 		elif tempTarget[len(tempTarget) - 1] != '/':
 			target = tempTarget + '/'
-	print(target)
 	for file in glob.glob(target + "*.txt"):
-		print(file)
+		print("Transforming",file)
 		with open(file, 'r') as in_file:
 		    stripped = (line.strip() for line in in_file)
 		    lines = (line.split(",") for line in stripped if line)
@@ -42,6 +40,7 @@ if userChoice == '1':
 		        writer.writerows(lines)
 
 else:
+	print("Transforming", target)
 	with open(target, 'r') as in_file:
 	    stripped = (line.strip() for line in in_file)
 	    lines = (line.split(",") for line in stripped if line)
